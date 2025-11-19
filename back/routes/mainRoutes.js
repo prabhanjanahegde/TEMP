@@ -81,11 +81,33 @@ router.get("/join", async (req, res) => {
     }
 });
 
+//display
+router.get("/join/:teamIn", async (req, res) => {
+    try {
+        const teamIn= req.params.teamIn;
+        const teamMembers= [];
+
+        const team = await Team.findOne({teamName:teamIn});
+        if (!team) return res.status(404).json({ error: "Team not found" });
+
+        for(let i= 0; i<team.members.length; i++){
+            var tmp= await User.findById(team.members[i]);
+            teamMembers.push(tmp.name);
+        }
+
+        res.json({teamMembers});
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+
 //join
 router.post("/join/:teamIn", async (req, res) => {
     try {
         const teamIn= req.params.teamIn;
 
+        const currUser= await User.findById(currId);
         const team = await Team.findOne({teamName:teamIn});
         if (!team) return res.status(404).json({ error: "Team not found" });
 
@@ -94,11 +116,11 @@ router.post("/join/:teamIn", async (req, res) => {
         }
 
         // repeat check
-        if (team.members.includes(User.findById(currId))) {
+        if (team.members.includes(currUser)) {
             return res.status(400).json({ message: "User already in team" });
         }
 
-        team.members.push(User.findById(currId));
+        team.members.push(currUser);
         await team.save();
 
         res.json({ message: "User joined the team", team });

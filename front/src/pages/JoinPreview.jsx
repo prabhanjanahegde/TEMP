@@ -11,7 +11,7 @@ const JoinPreview = () => {
         console.log(res.data);
         setTeams(res.data)
       } catch(err){
-        console.log("fetchTeams error",err);
+        console.log("fetch Teams error",err);
       }
     };
     fetchTeams();
@@ -22,7 +22,7 @@ const JoinPreview = () => {
       <h2>Teams</h2>
       <div id="teamContainer">
         {teams.map(team=>(
-          <div className="">{team.teamName}</div>
+          <a href={`http://localhost:5173/join/${team.teamName}`}>{team.teamName}</a>
         ))}
       </div>
     </div>
