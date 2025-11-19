@@ -4,14 +4,12 @@ import {Link} from 'react-router'
 const Home = () => {
   const actionCard={
     padding: "5vh" , 
-    marginTop: "5vh" , 
-    marginBottom: "5vh" , 
-    marginRight: "1vw" , 
-    marginLeft: "1vw" ,
-    height: "30vh",
-    width: "97vw",
+    margin: "1vh" , 
+    height: "20vh",
+    width: "49vw",
     borderStyle: "solid",
-    borderWidth: "2px"
+    borderWidth: "2px",
+    backgroundColor:"grey"
   }
 
   const iconCard={
@@ -25,6 +23,13 @@ const Home = () => {
     textDecoration: "none"
   }
 
+  const txt={
+    fontSize:"200%",
+    textAlign:"center",
+    marginTop:"3vh",
+    color:"white"
+  }
+
   return (
     <div>
         <div style={{display: "flex", margin: "1vw", height: "10vh"}}>
@@ -32,30 +37,32 @@ const Home = () => {
           <div style={{display: "flex", paddingTop: "3vh"}}>
               <div style={iconCard}>
                   <Link style={linker} to={"/register"}>
-                  <span>Register</span>
+                  <p>Register</p>
                   </Link>
               </div>
               <div style={iconCard}>
                   <Link style={linker} to={"/login"}>
-                  <span>Login</span>
+                  <p>Login</p>
                   </Link>
               </div>
               <div style={iconCard}>
                   <Link style={linker} to={"/logout"}>
-                  <span>Logout</span>
+                  <p>Logout</p>
                   </Link>
               </div>
           </div>
         </div>
-      <div style={actionCard}>
-          <Link to={"/create"}>
-              <span>Create</span>
+      <div style={{display:"flex", flexDirection: "row"}}>
+        <div style={actionCard}>
+          <Link style={linker} to={"/create"}>
+              <p style={txt}>Create</p>
           </Link>
-      </div>
-      <div style={actionCard}>
-          <Link to={"/joinPreview"}>
-              <span>Join</span>
-          </Link>
+        </div>
+        <div style={actionCard}>
+            <Link style={linker} to={"/joinPreview"}>
+                <p style={txt}>Join</p>
+            </Link>
+        </div>
       </div>
     </div>
   )
