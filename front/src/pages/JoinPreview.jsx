@@ -17,12 +17,43 @@ const JoinPreview = () => {
     fetchTeams();
   },[])
 
+  const container={
+    padding: "2vw" , 
+    marginTop: "20vh" , 
+    marginBottom: "40vh" , 
+    marginRight: "35vw" , 
+    marginLeft: "35vw" ,
+    height: "auto",
+    width: "30vw",
+    borderStyle: "solid",
+    borderWidth: "2px"
+  }
+
+  const anc={
+    textDecoration: "none",
+    color: "black"
+  }
+
+
+  const teamElement={
+    fontSize:"125%",
+    width: "24vw",
+    marginLeft:"1vh",  
+    marginBottom:"1vh" ,
+    borderStyle: "solid",
+    borderStyle: "solid",
+    borderWidth: "1px",
+    padding: "2px"
+  }
+
   return (
-    <div>
-      <h2>Teams</h2>
-      <div id="teamContainer">
+    <div  style={container}>
+      <h2 style={{fontSize:"180%", paddingLeft:"1vh", paddingBottom: "2vh"}}>Teams :</h2>
+      <div>
         {teams.map(team=>(
-          <a href={`http://localhost:5173/join/${team.teamName}`}>{team.teamName}</a>
+          <div style={teamElement}>
+            <a style={anc} href={`http://localhost:5173/join/${team.teamName}`}>{team.teamName}</a>
+          </div>
         ))}
       </div>
     </div>

@@ -33,23 +33,52 @@ const Join = () => {
     }
   };
 
-  return (
-    <div>
-      <h2>Team: {teamIn}</h2>
+  const container={
+    padding: "2vw" , 
+    marginTop: "20vh" , 
+    marginBottom: "40vh" , 
+    marginRight: "35vw" , 
+    marginLeft: "35vw" ,
+    height: "auto",
+    width: "30vw",
+    borderStyle: "solid",
+    borderWidth: "2px"
+  }
 
-      <h3>Members</h3>
+  const anc={
+    textDecoration: "none",
+    color: "black"
+  }
+
+
+  const teamElement={
+    fontSize:"125%",
+    width: "24vw",
+    marginLeft:"1vh",  
+    marginBottom:"1vh" ,
+    borderStyle: "solid",
+    borderStyle: "solid",
+    borderWidth: "1px",
+    padding: "2px"
+  }
+
+  return (
+    <div style={container}>
+      <h2 style={{fontSize:"180%", paddingLeft:"1vh", paddingBottom: "2vh"}}>Team: {teamIn}</h2>
+
+      <h3 style={{fontSize:"125%",width: "24vw",marginLeft:"1vh",  marginBottom:"1vh" ,padding: "2px"}}>Members :</h3>
 
       {teamMembers.length > 0 ? (
         <div>
-          {teamMembers.map((m, index) => (
-            <div key={index}>{m}</div>
+          {teamMembers.map((m) => (
+            <div style={teamElement}>{m}</div>
           ))}
         </div>
       ) : (
         <p>No members</p>
       )}
 
-      <button onClick={handleJoin} >Join Team</button>
+      <button style={teamElement} onClick={handleJoin} >Join Team</button>
       <p>{message}</p>
     </div>
   );

@@ -52,6 +52,16 @@ router.post("/login", async (req, res) => {
     }
 });
 
+//logout
+router.post("/logout", (req, res) => {
+    try {
+        currId= null;
+        res.json({ message: "Logged Out" });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
 //create
 router.post("/create", async (req, res) => {
     try {
@@ -70,6 +80,7 @@ router.post("/create", async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 });
+
 
 //all teams
 router.get("/join", async (req, res) => {
@@ -116,7 +127,7 @@ router.post("/join/:teamIn", async (req, res) => {
         }
 
         // repeat check
-        if (team.members.includes(currUser)) {
+        if (team.members.includes(currId)) {
             return res.status(400).json({ message: "User already in team" });
         }
 
